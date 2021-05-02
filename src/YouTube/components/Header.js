@@ -3,7 +3,7 @@ import _ from "lodash";
 
 export default class Header extends React.Component {
   state = {
-    keyword: "",
+    keyword: "twice",
   };
 
   handleChangeInput = (e) => {
