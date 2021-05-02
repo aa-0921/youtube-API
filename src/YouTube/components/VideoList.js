@@ -1,6 +1,6 @@
 import React from "react";
 
-const VideoList = (props) => {
+export const VideoList = (props) => {
   const video = props.videos.map((video, index) => {
     const url = "https://www.youtube.com/embed/" + video.id.videoId;
 
@@ -21,5 +21,3 @@ const VideoList = (props) => {
 
   return <div style={{ marginTop: "10px" }}>{video}</div>;
 };
-
-export default VideoList;
