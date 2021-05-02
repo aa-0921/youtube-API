@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Header from "../components/Header";
+import { SearchHeader } from "../components/SearchHeader";
 import { VideoList } from "../components/VideoList";
 
 const YOUTUBE_API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
@@ -24,7 +24,7 @@ export const YoutubeList = () => {
 
   return (
     <>
-      <Header onSerchYoutube={onSerchYoutube} />
+      <SearchHeader onSerchYoutube={onSerchYoutube} />
       {/* 追加 */}
       <VideoList videos={videos} />
     </>
