@@ -26,7 +26,7 @@ export const YoutubeList = () => {
     <>
       <SearchHeader onSerchYoutube={onSerchYoutube} />
       {/* 追加 */}
-      <VideoList videos={videos} />
+      {videos ? <VideoList videos={videos} /> : <></>}
     </>
   );
 };
