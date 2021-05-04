@@ -9,8 +9,8 @@ import { Button, CardColumns, Card, Form } from "react-bootstrap";
 // import { VerticallyCenteredModal } from "../components/VerticallyCenteredModal";
 // import { Toast } from "../components/Toast";
 // import { toast } from "react-toastify";
-
 const YOUTUBE_API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
+const YOUTUBE_SERACH_API_URI = "https://www.googleapis.com/youtube/v3/search?";
 
 export const YoutubeList = () => {
   const [videos, setVideos] = useState([]);
@@ -30,8 +30,19 @@ export const YoutubeList = () => {
     // var max = 5;
     // var page_num = Math.floor(Math.random() * (max + 1 - min)) + min;
 
+    const params = {
+      key: YOUTUBE_API_KEY,
+      q: query, // 検索キーワード
+      type: "video", // video,channel,playlistから選択できる
+      maxResults: "3", // 結果の最大数
+      order: "viewCount", // 結果の並び順を再生回数の多い順に
+      part: "snippet",
+    };
+    const queryParams = new URLSearchParams(params);
+
     fetch(
-      `https://www.googleapis.com/youtube/v3/search?type=video&part=snippet&q=${query}&maxResults=3&key=${YOUTUBE_API_KEY}`
+      YOUTUBE_SERACH_API_URI + queryParams
+      // `https://www.googleapis.com/youtube/v3/search?type=video&part=snippet&q=${query}&maxResults=3&key=${YOUTUBE_API_KEY}`
       // `https://api.unsplash.com/search/photos?query=${query}&page=${page_num}&per_page=30&client_id=${process.env.YOUTUBE_API_KEY}` // `https://api.unsplash.com/search/photos?query=${query}&client_id=${process.env.REACT_APP_CLIENT_ID}`
       // `https://api.unsplash.com/search/collections?query=${query}&page="5"&client_id=${process.env.REACT_APP_CLIENT_ID}`
     )
